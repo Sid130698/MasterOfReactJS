@@ -37,7 +37,7 @@ const PasswordBox = () => {
                 <div className='flex items-center justify-center'>
                     <input 
                         type="text" 
-                        className='box-border bg-white px-3 py-3 rounded-l-lg w-80' 
+                        className='box-border outline-none bg-white px-3 py-3 rounded-l-lg w-80' 
                         ref={passwordRef} 
                         readOnly 
                         value={generatedpassword}
