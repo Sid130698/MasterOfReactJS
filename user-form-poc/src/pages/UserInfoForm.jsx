@@ -1,39 +1,58 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import { useEffect } from "react";
 
-const UserInfoForm = ({setOpenForm,users,setUsers}) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [employeeId, setEmployeeId] = useState('');
-  const [country, setCountry] = useState('');
- 
-
-  
+const UserInfoForm = ({ setOpenForm, users, setUsers, currUserEmpId }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
+  const [country, setCountry] = useState("");
+    const buttonText = currUserEmpId==null?"Submit":"Update";
+  let currentUser = null;
   const countries = ["India", "USA", "Australia", "England"];
-const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    
-    console.table(firstName, lastName, employeeId, country);
+
     const newUser = {
       firstName: firstName,
       lastName: lastName,
       employeeId: employeeId,
-      country: country
+      country: country,
     };
 
-   
-    setUsers([...users, newUser]);
+    if (currUserEmpId) {
+      const updatedUsers = users.map(user => {
+        if (user.employeeId === currUserEmpId) {
+          return newUser;
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
+    } else {
+      setUsers([...users, newUser]);
+    }
 
     setFirstName('');
     setLastName('');
     setEmployeeId('');
     setCountry('');
     setOpenForm(false);
-    
   };
-useEffect(()=>{
+  useEffect(() => {
+    if (currUserEmpId != null) {
+      users.forEach((user) => {
+        if (user.employeeId === currUserEmpId) {
+          currentUser = user;
+        }
+      });
+    }
+    if(currentUser!=null){
+        setFirstName(currentUser.firstName);
+        setLastName(currentUser.lastName);
+        setCountry(currentUser.country);
+        setEmployeeId(currentUser.employeeId);
+    }
     console.log(users);
-},[users])
+  }, [users]);
 
   return (
     <div>
@@ -105,11 +124,18 @@ useEffect(()=>{
           >
             <option value="">Select Country</option>
             {countries.map((countryOption) => (
-              <option key={countryOption} value={countryOption}>{countryOption}</option>
+              <option key={countryOption} value={countryOption}>
+                {countryOption}
+              </option>
             ))}
           </select>
         </div>
-        <button className="outline-none bg-blue-600 rounded-md py-3 px-3 mt-3 text-white" type="submit">Submit</button>
+        <button
+          className="outline-none bg-blue-600 rounded-md py-3 px-3 mt-3 text-white"
+          type="submit"
+        >
+          {buttonText}
+        </button>
       </form>
     </div>
   );
