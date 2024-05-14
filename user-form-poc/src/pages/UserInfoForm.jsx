@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const UserInfoForm = ({ setOpenForm, users, setUsers, currUserEmpId }) => {
   const [firstName, setFirstName] = useState("");

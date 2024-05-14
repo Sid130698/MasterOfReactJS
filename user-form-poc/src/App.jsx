@@ -7,7 +7,7 @@ function App() {
   const [openForm, setOpenForm] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [users, setUsers] = useState([]);
-  const [currUserEmpId,setCurrUserEmpId] = useState(null);
+  const [currUserEmpId,setCurrUserEmpId] = useState();
   const handleOpenForm = ()=>{
     setOpenForm(!openForm);
   }

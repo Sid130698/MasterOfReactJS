@@ -1,7 +1,8 @@
-import React from 'react';
-import UserInfoForm from "../src/pages/UserInfoForm";
+import UserInfoForm from "./UserInfoForm";
 import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // Import extend-expect for additional matchers like toBeInTheDocument
+import "@testing-library/jest-dom";
+
+
 
 
 test('renders UserInfoForm component', () => {
@@ -22,8 +23,9 @@ test('renders UserInfoForm component', () => {
 test('submits form with input values', () => {
   const setUsersMock = jest.fn();
   const setOpenFormMock = jest.fn();
+  const users = [];
   const { getByLabelText, getByText } = render(
-    <UserInfoForm setUsers={setUsersMock} setOpenForm={setOpenFormMock} />
+    <UserInfoForm users={users} setUsers={setUsersMock} setOpenForm={setOpenFormMock} />
   );
   const firstNameInput = getByLabelText('First Name');
   const lastNameInput = getByLabelText('Last Name');
@@ -58,3 +60,6 @@ test('renders UserInfoForm component with dynamic button text', () => {
   expect(countrySelect).toBeInTheDocument();
   expect(submitButton).toBeInTheDocument();
 });
+test('Always true test',()=>{
+  expect(true).toBe.true;
+})
