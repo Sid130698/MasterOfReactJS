@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import UserInfoForm from '../pages/UserInfoForm';
-import UserTable from './UserTable';
+import UserInfoForm from '../src/pages/UserInfoForm';
+import UserTable from '../src/components/UserTable';
 import "@testing-library/jest-dom";
-import App from '../App'
+import App from '../src/App'
 
 
 test('edits user information', () => {

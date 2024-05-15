@@ -1,4 +1,4 @@
-import UserInfoForm from "./UserInfoForm";
+import UserInfoForm from "../src/pages/UserInfoForm";
 import { render, fireEvent, screen } from '@testing-library/react';
 import "@testing-library/jest-dom";
 
