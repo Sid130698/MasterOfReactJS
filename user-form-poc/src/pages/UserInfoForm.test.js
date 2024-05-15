@@ -52,7 +52,7 @@ test('renders UserInfoForm component with dynamic button text', () => {
   const lastNameInput = getByLabelText('Last Name');
   const employeeIdInput = getByLabelText('Employee ID');
   const countrySelect = getByLabelText('Country');
-  const submitButton = getByText('Submit') || getByText('Update');
+  const submitButton = getByText('Submit');
 
   expect(firstNameInput).toBeInTheDocument();
   expect(lastNameInput).toBeInTheDocument();
