@@ -1,8 +1,8 @@
 import React from 'react';
 
-const UserTable = ({ users, setUsers, setCurrUserEmpId }) => {
+const UserTable = ({ users, setUsers, setCurrUserEmpId , setTableVisible}) => {
   if (!users || users.length === 0) {
-    return <p>No users available.</p>;
+    return (<><button className="outline-none bg-blue-600 rounded-md py-3 px-3 mt-3 text-white" onClick={()=>{setTableVisible(false)}}>Go Back</button><p>No users available.</p></>);
   }
 
   const headers = Object.keys(users[0]);
@@ -17,6 +17,7 @@ const UserTable = ({ users, setUsers, setCurrUserEmpId }) => {
 
   return (
     <div>
+     <button className="outline-none bg-blue-600 rounded-md py-3 px-3 mt-3 text-white" onClick={()=>{setTableVisible(false)}}>Go Back</button>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -34,8 +35,8 @@ const UserTable = ({ users, setUsers, setCurrUserEmpId }) => {
                 <td  className="whitespace-nowrap px-4 py-4" key={header}>{user[header]}</td>
               ))}
               <td>
-                <button onClick={() => handleEdit(user.employeeId)}>Edit</button>
-                <button onClick={() => handleDelete(user.employeeId)}>Delete</button>
+                <button className='className=outline-none bg-blue-600 rounded-md py-3 px-3 m-3 text-white' onClick={() => handleEdit(user.employeeId)}>Edit</button>
+                <button className='className=outline-none bg-blue-600 rounded-md py-3 px-3 m-3 text-white' onClick={() => handleDelete(user.employeeId)}>Delete</button>
               </td>
             </tr>
           ))}

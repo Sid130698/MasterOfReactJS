@@ -50,11 +50,11 @@ const UserInfoForm = ({ setOpenForm, users, setUsers, currUserEmpId }) => {
         setCountry(currentUser.country);
         setEmployeeId(currentUser.employeeId);
     }
-    console.log(users);
   }, [users]);
 
   return (
     <div>
+        <button className="outline-none bg-blue-600 rounded-md py-3 px-3 mt-3 text-white" onClick={()=>{setOpenForm(false)}}>Go Back</button>
       <form onSubmit={handleSubmit}>
         <div className="w-full">
           <label
