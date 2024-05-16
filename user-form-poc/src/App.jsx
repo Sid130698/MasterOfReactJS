@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UserInfoForm from './pages/UserInfoForm';
-import UserTable from './components/UserTable';
+import UserTable from './pages/UserTable';
 import { useEffect } from 'react';
 
 function App() {
